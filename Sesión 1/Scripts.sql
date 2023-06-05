@@ -1,0 +1,65 @@
+--CREACION DE LA BASE DE DATOS
+CREATE DATABASE DBPRUEBA
+
+--ACCESO A LA BASE DE DATOS
+USE DBPRUEBA
+USE master
+
+--COMENTARIOS
+--	ESTE ES UN COMENTARIO
+
+/*
+	ESTE ES UN COMENTARIO MULTILINEA
+*/
+
+--SQL
+/*
+SELECT
+DELETE
+UPDATE
+INSERT
+*/
+
+--T-SQL (PARA TERMINO DE PROGRAMACIÓN)
+/*
+SQL SERVER (SQL / TSQL)
+ORACLE
+MYSQL
+MARIADB
+*/
+
+----------------------------------------------------
+--DECLARACION DE VARIABLES
+DECLARE @Number INT
+BEGIN
+	--ASIGNACION DE VALOR
+	SET @Number = 1
+
+	--AS RENOMBRADO DE VARIABLES EN UNA CONSULTA
+	SELECT @Number AS NumSeteado
+END
+GO
+-----------------------------------------------------
+--FORMA CORRECTA
+BEGIN
+	SELECT @Estatus = Estatus,
+		   @Nombre = Nombre 
+			FROM CLIENTE WHERE IdCliente = 69
+END
+
+--FORMA INCORRECTA PORQUE HACES DOBLE EJECUCION DE UNA CONSULTA
+BEGIN
+	SET @Estatus = (SELECT Estatus FROM CLIENTE WHERE IdCliente = 69)
+	SET @Nombre = (SELECT Nombre FROM CLIENTE WHERE IdCliente = 69)
+END
+-----------------------------------------------------
+--FORMA INCORRECTA
+CREATE TABLE PRUEBA
+(IdPrueba INT PRIMARY KEY)
+
+--FORMA CORRECTA
+CREATE TABLE PRUEBA
+(IdPrueba INT,
+ CONSTRAINT PK_IdPrueba_PRU PRIMARY KEY (IdPrueba))
+ -----------------------------------------------------
+
